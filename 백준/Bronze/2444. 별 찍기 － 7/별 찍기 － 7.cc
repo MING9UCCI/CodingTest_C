@@ -1,32 +1,24 @@
+//조금 더 정돈 된 별 찍기
+// 상단과 하단을 나눠서 두 단계로 처리
+
 #include <stdio.h>
 
 int main()
 {
-    int n, cnt = 1;
+    int n;
     scanf("%d", &n);
-    int space = n-1;
+    
+    // 상단 삼각형 출력
     for (int i = 0; i < n; i++) {
-        for (int j = space; j > 0; j--) {
-            printf(" ");
-        }
-        for (int j = 0; j < cnt; j++) {
-            printf("*");
-        }
-        space--;
-        cnt += 2;
+        for (int j = 0; j < n-1-i; j++) printf(" ");
+        for (int j = 0; j < 2*i+1; j++) printf("*");
         printf("\n");
     }
-    space = 1;
-    cnt -= 2;
-    for (int i = 0; i < n-1; i++) {
-        cnt -= 2;
-        for (int j = 0; j < space; j++) {
-            printf(" ");
-        }
-        for (int j = cnt; j > 0; j--) {
-            printf("*");
-        }
-        space++;
+    
+    // 하단 삼각형 출력 
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < i; j++) printf(" ");
+        for (int j = 0; j < 2*(n-i)-1; j++) printf("*");
         printf("\n");
     }
 
